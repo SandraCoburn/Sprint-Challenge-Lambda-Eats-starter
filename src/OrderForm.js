@@ -65,14 +65,14 @@ const OrderForm = () => {
       .validate(event.target.value)
       .then((valid) => {
         setErrors({
-          ...setErrors,
+          ...errors,
           [event.target.name]: "",
         });
       })
       .catch((err) => {
         setErrors({
           ...errors,
-          [event.target.name]: err.errors[0],
+          [event.target.name]: err.errors,
         });
       });
   };
@@ -103,7 +103,7 @@ const OrderForm = () => {
         {errors.name.length > 0 ? <p className="error">{errors.name}</p> : null}
       </label>
       <label htmlFor="size">
-        What pizza size:
+        Pizza size:
         <select id="size" name="size">
           <option value="small">Small</option>
           <option value="medium">Medium</option>
